@@ -9,6 +9,8 @@ var lGuess;
 var wordGuess;
 var wordGuessArray= [];
 var hangWordArray = [];
+var falseCount = 0;
+var falseMsg = "";
 function wordLoad() 
 	{
 	hangWord = $("hangWord").value;
@@ -40,8 +42,7 @@ function wordLoad()
 	if (lGuess.search(/[^a-z]/i) !==-1 || lGuess.length > 1)
 		{
 		alert("Enter one letter");
-		}
-		
+		}		
 	else 
 		{
 		lGuess = lGuess.toLowerCase();
@@ -54,12 +55,22 @@ function wordLoad()
 			indices.push(k);			
 			}
 		}
+		if (hangWordArray.indexOf(lGuess)===-1)
+			{
+			falseCount++;
+			var leftGuess = 7;
+			falseMsg = "Prisoner, you have " + falseCount +" wrong guesses." + (leftGuess - falseCount) + " guesses until you swing!";
+			$("falseLetters").firstChild.nodeValue = falseMsg;
+			}
 	for (var l=0; l<indices.length; l++)
 		{
 		var m = indices[l];
 		wordGuessArray[m]= lGuess;
 		$("trueLetters").firstChild.nodeValue = wordGuessArray.join(" ");
 		}
+	if (falseCount===7){
+		$("falseLetters").firstChild.nodeValue = "To the tumbril, Prisoner!";
+	}
  	}
 
 window.onload =  function()
