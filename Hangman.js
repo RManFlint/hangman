@@ -12,7 +12,7 @@ var hangWordArray = [];
 function wordLoad() 
 	{
 	hangWord = $("hangWord").value;
-	hangWordArray=[];
+	
 	if (hangWord.search(/[^a-z]/i) !==-1)
 		{
 		alert("Enter only letters");
@@ -20,18 +20,21 @@ function wordLoad()
 		else 
 			{
 			hangWord = hangWord.toLowerCase();
+			hangWordArray = hangWord.split("");
+			console.log("Initial value fo hangword array is " + hangWordArray);
 			$("hangWord").value = "";
 			}
 	
-	wordGuess = "";
 	/*Note this is a no space, not an empty space. An empty space 
 	will leave a blank at the beginning of the string. */ 
 	for (var i=0; i < hangWord.length; i++) 
 		{
-		wordGuess += "__ ";
-		}	
-	$("trueLetters").firstChild.nodeValue = wordGuess;
-	console.log("wordGuess is " + wordGuess);
+		wordGuessArray[i] = "__ ";
+		}
+		console.log(" WordGuessArray is is an array is " + Array.isArray(wordGuessArray));
+		console.log("The initlal wordGuess value is " +wordGuessArray);
+		
+	$("trueLetters").firstChild.nodeValue = wordGuessArray.join("");
 	
 	}
 	
@@ -50,10 +53,15 @@ function wordLoad()
 		lGuess = lGuess.toLowerCase();
 		}
 	console.log("lGuess after .toLowerCase is " + lGuess);
-	hangWordArray = hangWord.split("");
+	
+	
+	/*for(var h = 0; h < wordGuess.length; h++){
+		wordGuessArray[h]= wordGuess[h];
+	}
 	
 	wordGuessArray = wordGuess.split(" ");
 	console.log("wordGuessArray is " + wordGuessArray);
+	*/
 	var indices = [];
 	console.log("Hangword in lGuess function is " + hangWord);
 	for (var k = 0; k < hangWordArray.length; k++)
@@ -71,7 +79,7 @@ function wordLoad()
 			console.log("M is " + m);
 		wordGuessArray[m]= lGuess;
 		
-		console.log(wordGuessArray);
+		console.log(wordGuessArray[m]);
 		$("trueLetters").firstChild.nodeValue = wordGuessArray.join(" ");
 		console.log("The guessword string is " + $("trueLetters").firstChild.nodeValue);
 		
