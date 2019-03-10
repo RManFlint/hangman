@@ -11,6 +11,9 @@ var wordGuessArray= [];
 var hangWordArray = [];
 var falseCount = 0;
 var falseMsg = "";
+var wrongGuess = "You have guessed ";
+var indexLength = 0;
+
 function wordLoad() 
 	{
 	hangWord = $("hangWord").value;
@@ -67,10 +70,22 @@ function wordLoad()
 		var m = indices[l];
 		wordGuessArray[m]= lGuess;
 		$("trueLetters").firstChild.nodeValue = wordGuessArray.join(" ");
+		console.log("indices length is " + indices.length);
+		indexLength++;
+	
 		}
 	if (falseCount===7){
 		$("falseLetters").firstChild.nodeValue = "To the tumbril, Prisoner!";
 	}
+	
+	if (hangWord.length === indexLength){
+		$("falseLetters").firstChild.nodeValue = "You have evaded the hangman for today, Prisoner!  Return to your cell!";
+	}
+
+	
+	$("playerGuess").value = "";
+	$("playerGuess").focus();
+
  	}
 
 window.onload =  function()
