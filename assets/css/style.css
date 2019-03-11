@@ -14,7 +14,7 @@ body{
 	    30deg, #80aaff 0%, #99ccff 30%, white 50%, #99ccff 80%, #80aaff 100%);
 }
 
-.red {
+.red #playerWins {
     color:red;
     font-size:24px;
     font-style: italic;

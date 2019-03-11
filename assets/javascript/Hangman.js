@@ -13,6 +13,7 @@ var falseCount = 0;
 var falseMsg = "";
 var wrongGuess = [];
 var indexLength=0;
+var playerWins = 0;
 
 function wordLoad() 
 	{
@@ -104,7 +105,10 @@ function wordLoad()
 	}
 	
 	if (hangWord.length === indexLength){
-		$("falseLetters").firstChild.nodeValue = "You have evaded the hangman for today, Prisoner!  Return to your cell!";
+		playerWins++;
+		$("falseLetters").firstChild.nodeValue = "You have evaded the hangman for today, Prisoner!  Win seven in a row and gain your freedom!";
+		console.log("playerWins are " + playerWins);
+		$("playerWins").firstChild.nodeValue = "You have won " + playerWins + " games.  Win " + 7 + " games and you are free!" ;
 		$("falseLetters").setAttribute("class", "blue")
 		$("playerGuess").disabled = true;
 		wordGuessArray.length = 0;
@@ -114,6 +118,9 @@ function wordLoad()
 		wrongGuess.length=0;
 	}
 
+	if (playerWins >= 7){
+		$("playerWins").firstChild.nodeValue = "You have gained your freedom, Prisoner!  Be gone and be damned!";
+	}
 	
 	$("playerGuess").value = "";
 	$("playerGuess").focus();
