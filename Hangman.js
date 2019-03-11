@@ -61,6 +61,7 @@ function wordLoad()
 		if (hangWordArray.indexOf(lGuess)===-1)
 			{
 			falseCount++;
+			console.log("False Count is " + falseCount);
 			var leftGuess = 7;
 			falseMsg = "Prisoner, you have " + falseCount +" wrong guesses." + (leftGuess - falseCount) + " guesses until you swing!";
 			$("falseLetters").firstChild.nodeValue = falseMsg;
@@ -72,14 +73,17 @@ function wordLoad()
 		$("trueLetters").firstChild.nodeValue = wordGuessArray.join(" ");
 		console.log("indices length is " + indices.length);
 		indexLength++;
+		console.log("Indexlength is "+ indexLength)
 	
 		}
 	if (falseCount===7){
 		$("falseLetters").firstChild.nodeValue = "To the tumbril, Prisoner!";
+		$("playerGuess").disabled = true;
 	}
 	
 	if (hangWord.length === indexLength){
 		$("falseLetters").firstChild.nodeValue = "You have evaded the hangman for today, Prisoner!  Return to your cell!";
+		$("playerGuess").disabled = true;
 	}
 
 	
