@@ -1,0 +1,17 @@
+* {font-family: Arial, Helvetica, sans-serif}
+
+body{
+    width:600px;
+    margin: 30px auto;
+}
+#empty-div{
+    padding: 40px;
+}
+
+.red {
+    color:red;
+    font-size:24px;}
+
+.blue {
+    color:blue;
+    font-size:24px;}
