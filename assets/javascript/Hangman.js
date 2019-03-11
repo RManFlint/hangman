@@ -12,7 +12,7 @@ var hangWordArray = [];
 var falseCount = 0;
 var falseMsg = "";
 var wrongGuess = [];
-var indexLength = 0;
+var indexLength=0;
 
 function wordLoad() 
 	{
@@ -47,6 +47,7 @@ function wordLoad()
 	{
 	var leftGuess;
 	lGuess = $("playerGuess").value;
+	console.log("Hangword in lgues is " + hangWord);
 	if(hangWord.length < 7){
 		leftGuess = hangWord.length;
 	}
@@ -55,9 +56,9 @@ function wordLoad()
 	}
 
 	
-	if (lGuess.search(/[^a-z]/i) !==-1 || lGuess.length > 1)
+	if (lGuess.search(/[^a-z]/i) !==-1 || lGuess.length > 1 || wrongGuess.indexOf(lGuess)> -1)
 		{
-		alert("Enter one letter");
+		alert("Enter one letter or you've already entered that letter");
 		}		
 	else 
 		{
@@ -68,16 +69,19 @@ function wordLoad()
 		{
 		if (hangWordArray[k] === lGuess) 
 			{
-			indices.push(k);			
+			indices.push(k);
+			indexLength++;	
+			console.log("indexLength is " + indexLength);		
 			}
 		}
 		if (hangWordArray.indexOf(lGuess)===-1)
 			{
 			falseCount++;
-			
 			falseMsg = "Prisoner, you have " + falseCount +" wrong guesses." + (leftGuess - falseCount) + " guesses until you swing!";
 			$("falseLetters").firstChild.nodeValue = falseMsg;
 			wrongGuess.push(lGuess);
+			console.log("wrongGuess join is " + wrongGuess.join());
+			console.log("wrongGuess length is " + wrongGuess.length);
 			$("wrongGuess").firstChild.nodeValue = "You have guessed " + wrongGuess.join(", ");
 					}
 	for (var l=0; l<indices.length; l++)
@@ -86,20 +90,25 @@ function wordLoad()
 		wordGuessArray[m]= lGuess;
 		$("trueLetters").firstChild.nodeValue = wordGuessArray.join(" ");
 		console.log("indices length is " + indices.length);
-		indexLength++;
-		console.log("Indexlength is "+ indexLength)
-	
 		}
 	if (falseCount===leftGuess){
 		$("falseLetters").firstChild.nodeValue = "To the tumbril, Prisoner!  Where shall we send the corpse?";
 		$("falseLetters").setAttribute("class", "red")
 		$("playerGuess").disabled = true;
+		wrongGuess.length = 0;
+		indices.length=0;
+		falseCount = 0;
+		indexLength=0;
 	}
 	
 	if (hangWord.length === indexLength){
 		$("falseLetters").firstChild.nodeValue = "You have evaded the hangman for today, Prisoner!  Return to your cell!";
 		$("falseLetters").setAttribute("class", "blue")
 		$("playerGuess").disabled = true;
+		wrongGuess.length = 0;
+		indices.length=0;
+		falseCount = 0;
+		indexLength=0;
 	}
 
 	
