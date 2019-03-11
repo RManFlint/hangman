@@ -12,17 +12,23 @@
 
     <!-- We created an empty HTML div. Note that there is no content inside. -->
     <div id="empty-div">
+      <div id="hangWordDiv">
       <label for="hangWord">Hangman, type your word of twelve or fewer letters here:</label><br>
-        <input type="text" name="hangWord" id="hangWord" value = "Hangman">
-        <input type="submit" id = "wordSubmit" name="wordSubmit"><br><br>
-      <label for="playerGuess">Condemned prisoner, type your letter here!</label><br>
-        <input type="text" name="playerGuess" id="playerGuess" value="a">
-	      <input type="submit" id = "letterSubmit" name="letterSubmit">
+        <input type="text" name="hangWord" id="hangWord" value="Hangman's word goes here.">
+        <input type="submit" id = "wordSubmit" name="wordSubmit" ><br><br>
+      </div>
+      <div id="hangWordDiv">
+      <label for="playerGuess">Condemned prisoner, type your letter here!  You have seven guesses!</label><br>
+        <input type="text" name="playerGuess" id="playerGuess" value="Guess a letter!">
+        <input type="submit" id = "letterSubmit" name="letterSubmit">
+      </div>
      
-    </div>
+    <div id= "letters">
         <span id = "trueLetters">&nbsp;</span><br><br>
     <span id="falseLetters">&nbsp;</span><br><br>
-    <span id="wrongGuess">&nbsp;</span><br><br>    
+    <span id="wrongGuess">&nbsp;</span><br><br> 
+  </div> 
+  </div>  
   </body>
 </html>
 <!-- git ecample code -->
