@@ -36,6 +36,9 @@ function wordLoad()
 		wordGuessArray[i] = "__ ";
 		}		
 	$("trueLetters").firstChild.nodeValue = wordGuessArray.join("");
+	$("playerGuess").focus();
+	$("playerGuess").value = "";
+
 	}
 	
 	function lGuess() 
