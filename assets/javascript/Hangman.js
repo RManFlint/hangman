@@ -16,6 +16,8 @@ var indexLength = 0;
 
 function wordLoad() 
 	{
+	wordGuessArray.length=0;
+	$("playerGuess").disabled = false;
 	hangWord = $("hangWord").value;
 	
 	if (hangWord.search(/[^a-z]/i) !==-1)
