@@ -106,9 +106,9 @@ function wordLoad()
 	
 	if (hangWord.length === indexLength){
 		playerWins++;
-		$("falseLetters").firstChild.nodeValue = "You have evaded the hangman for today, Prisoner!  Win seven in a row and gain your freedom!";
+		$("falseLetters").firstChild.nodeValue = "You have evaded the hangman for today, Prisoner!  Win five in a row and gain your freedom!";
 		console.log("playerWins are " + playerWins);
-		$("playerWins").firstChild.nodeValue = "You have won " + playerWins + " games.  Win " + 7 + " games and you are free!" ;
+		$("playerWins").firstChild.nodeValue = "You have won " + playerWins + " games.  Win " + parseInt(5-playerWins) + " games and you are free!" ;
 		$("falseLetters").setAttribute("class", "blue")
 		$("playerGuess").disabled = true;
 		wordGuessArray.length = 0;
@@ -118,8 +118,8 @@ function wordLoad()
 		wrongGuess.length=0;
 	}
 
-	if (playerWins >= 7){
-		$("playerWins").firstChild.nodeValue = "You have gained your freedom, Prisoner!  Be gone and be damned!";
+	if (playerWins >= 5){
+		$("falseLetters").firstChild.nodeValue = "You have gained your freedom, Prisoner!  Be gone and be damned!";
 	}
 	
 	$("playerGuess").value = "";
