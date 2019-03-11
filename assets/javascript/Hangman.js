@@ -40,7 +40,15 @@ function wordLoad()
 	
 	function lGuess() 
 	{
+	var leftGuess;
 	lGuess = $("playerGuess").value;
+	if(hangWord.length < 7){
+		leftGuess = hangWord.length;
+	}
+	else{
+		leftGuess = 7;
+	}
+
 	
 	if (lGuess.search(/[^a-z]/i) !==-1 || lGuess.length > 1)
 		{
@@ -61,7 +69,7 @@ function wordLoad()
 		if (hangWordArray.indexOf(lGuess)===-1)
 			{
 			falseCount++;
-			var leftGuess = 7;
+			
 			falseMsg = "Prisoner, you have " + falseCount +" wrong guesses." + (leftGuess - falseCount) + " guesses until you swing!";
 			$("falseLetters").firstChild.nodeValue = falseMsg;
 			wrongGuess.push(lGuess);
@@ -77,7 +85,7 @@ function wordLoad()
 		console.log("Indexlength is "+ indexLength)
 	
 		}
-	if (falseCount===7){
+	if (falseCount===leftGuess){
 		$("falseLetters").firstChild.nodeValue = "To the tumbril, Prisoner!  Where shall we send the corpse?";
 		$("falseLetters").setAttribute("class", "red")
 		$("playerGuess").disabled = true;

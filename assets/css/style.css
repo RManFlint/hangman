@@ -16,7 +16,10 @@ body{
 
 .red {
     color:red;
-    font-size:24px;}
+    font-size:24px;
+    font-style: italic;
+    font-weight: bold;
+}
 
 .blue {
     color:blue;
