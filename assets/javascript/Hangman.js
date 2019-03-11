@@ -83,6 +83,7 @@ function wordLoad()
 			console.log("wrongGuess join is " + wrongGuess.join());
 			console.log("wrongGuess length is " + wrongGuess.length);
 			$("wrongGuess").firstChild.nodeValue = "You have guessed " + wrongGuess.join(", ");
+			console.log("wrongGuess is " +wrongGuess);
 					}
 	for (var l=0; l<indices.length; l++)
 		{
@@ -95,20 +96,22 @@ function wordLoad()
 		$("falseLetters").firstChild.nodeValue = "To the tumbril, Prisoner!  Where shall we send the corpse?";
 		$("falseLetters").setAttribute("class", "red")
 		$("playerGuess").disabled = true;
-		wrongGuess.length = 0;
+		wordGuessArray.length = 0;
 		indices.length=0;
 		falseCount = 0;
 		indexLength=0;
+		wrongGuess.length=0;
 	}
 	
 	if (hangWord.length === indexLength){
 		$("falseLetters").firstChild.nodeValue = "You have evaded the hangman for today, Prisoner!  Return to your cell!";
 		$("falseLetters").setAttribute("class", "blue")
 		$("playerGuess").disabled = true;
-		wrongGuess.length = 0;
+		wordGuessArray.length = 0;
 		indices.length=0;
 		falseCount = 0;
 		indexLength=0;
+		wrongGuess.length=0;
 	}
 
 	
