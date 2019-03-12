@@ -21,16 +21,17 @@ function wordLoad()
 	$("playerGuess").disabled = false;
 	hangWord = $("hangWord").value;
 	
-	if (hangWord.search(/[^a-z]/i) !==-1)
+	if (hangWord.search(/[^a-z]/i) !==-1 || hangWord.length > 12 )
 		{
-		alert("Enter only letters");
+		alert("Enter only letters. Make sure the word is only twelve letters");
+		return;
+		} 
+	else	
+		{
+		hangWord = hangWord.toLowerCase();
+		hangWordArray = hangWord.split("");
+		$("hangWord").value = "";
 		}
-		else 
-			{
-			hangWord = hangWord.toLowerCase();
-			hangWordArray = hangWord.split("");
-			$("hangWord").value = "";
-			}
 	
 	/*Note this is a no space, not an empty space. An empty space 
 	will leave a blank at the beginning of the string. */ 
@@ -102,6 +103,7 @@ function wordLoad()
 		falseCount = 0;
 		indexLength=0;
 		wrongGuess.length=0;
+		$("wrongGuess").firstChild.nodeValue = "";
 	}
 	
 	if (hangWord.length === indexLength){
@@ -116,6 +118,7 @@ function wordLoad()
 		falseCount = 0;
 		indexLength=0;
 		wrongGuess.length=0;
+		$("wrongGuess").firstChild.nodeValue = "";
 	}
 
 	if (playerWins >= 5){
@@ -124,11 +127,11 @@ function wordLoad()
 	
 	$("playerGuess").value = "";
 	$("playerGuess").focus();
-
  	}
 
 window.onload =  function()
 	{
 		$("wordSubmit").onclick = wordLoad;
 		$("letterSubmit").onclick = lGuess;	
-	};
+	}
+
